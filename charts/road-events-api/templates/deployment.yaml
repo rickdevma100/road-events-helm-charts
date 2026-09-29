@@ -127,7 +127,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ if and .Values.smtp.existingSecret .Values.smtp.existingSecret.name }}{{ .Values.smtp.existingSecret.name }}{{ else }}{{ .Release.Name }}-secret{{ end }}
-                  key: {{ if and .Values.smtp.existingSecret .Values.smtp.existingSecret.key }}{{ .Values.smtp.existingSecret.key }}{{ else }}SMTP_PASSWORD{{ end }}
+                  key: {{ if and .Values.smtp.existingSecret .Values.smtp.existingSecret.name .Values.smtp.existingSecret.key }}{{ .Values.smtp.existingSecret.key }}{{ else }}SMTP_PASSWORD{{ end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           readinessProbe:
