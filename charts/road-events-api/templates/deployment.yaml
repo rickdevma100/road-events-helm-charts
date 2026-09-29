@@ -20,6 +20,8 @@ spec:
         app.kubernetes.io/name: road-events-api
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: api
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -10,8 +10,8 @@ image:
 config:
   deviceToken: "secret-device-token-12345"
   bulb:
-    adapter: "mock" # "tuya" or "mock"
-    ip: "192.168.0.109"
+    adapter: "tuya" # "tuya" or "mock"
+    ip: "192.168.0.107"
     deviceId: "d798b17a8abfe1e652uoe1"
     localKey: "t5lS>p7jES(}Lby}"
     protocol: "3.5"
@@ -57,7 +57,7 @@ ngrok:
     tag: latest
     pullPolicy: IfNotPresent
   authtoken: ""
-  domain: ""
+  domain: "unmolded-runway-shelve.ngrok-free.dev"
 
 resources:
   requests:
