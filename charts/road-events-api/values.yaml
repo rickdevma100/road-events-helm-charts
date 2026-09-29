@@ -1,0 +1,65 @@
+namespace: road-events
+
+replicaCount: 1
+
+image:
+  repository: rickdevma100/road-events-api
+  tag: latest
+  pullPolicy: Always
+
+config:
+  deviceToken: "secret-device-token-12345"
+  bulb:
+    adapter: "mock" # "tuya" or "mock"
+    ip: "192.168.0.109"
+    deviceId: "d798b17a8abfe1e652uoe1"
+    localKey: "t5lS>p7jES(}Lby}"
+    protocol: "3.5"
+    brightness: 1000
+
+s3:
+  endpointUrl: "http://lang-learn-minio.lang-learn.svc.cluster.local:9000"
+  bucketName: "road-events"
+  accessKey: "minioadmin"
+  secretKey: "minioadmin"
+  region: "us-east-1"
+
+smtp:
+  enabled: true
+  host: "smtp.gmail.com"
+  port: 587
+  user: "rickdev.ma100@gmail.com"
+  adminEmail: "rickdev.ma100@gmail.com"
+  recipientEmail: "sayantikasaha400@gmail.com"
+  password: "lszf keer clvm mnvz"
+  existingSecret:
+    name: "alertmanager-smtp-secret"
+    key: "smtp-password"
+
+database:
+  host: postgres-postgis
+  port: 5432
+  name: roadevents
+  user: postgres
+  password: postgres_password_123
+
+service:
+  type: ClusterIP
+  port: 8000
+
+ngrok:
+  enabled: false
+  image:
+    repository: ngrok/ngrok
+    tag: latest
+    pullPolicy: IfNotPresent
+  authtoken: ""
+  domain: ""
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi

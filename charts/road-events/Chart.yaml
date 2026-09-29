@@ -1,0 +1,15 @@
+apiVersion: v2
+name: road-events
+description: Complete Road Events & Smart Bulb infrastructure stack for MicroK8s
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+dependencies:
+  - name: postgres-postgis
+    version: 0.1.0
+    repository: "file://../postgres-postgis"
+    condition: postgres-postgis.enabled
+  - name: road-events-api
+    version: 0.1.0
+    repository: "file://../road-events-api"
+    condition: road-events-api.enabled

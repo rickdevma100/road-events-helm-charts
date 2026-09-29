@@ -1,0 +1,47 @@
+global:
+  namespace: road-events
+
+postgres-postgis:
+  enabled: true
+  namespace:
+    create: false
+    name: road-events
+  auth:
+    database: roadevents
+    username: postgres
+    password: postgres_password_123
+  persistence:
+    enabled: true
+    claimName: postgres-postgis-pvc
+    storageClass: microk8s-hostpath
+    size: 10Gi
+
+road-events-api:
+  enabled: true
+  namespace: road-events
+  replicaCount: 1
+  image:
+    repository: rickdevma100/road-events-api
+    tag: latest
+    pullPolicy: Always
+  config:
+    deviceToken: "secret-device-token-12345"
+    bulb:
+      adapter: "mock"
+      ip: "192.168.0.109"
+      deviceId: "d798b17a8abfe1e652uoe1"
+      localKey: "t5lS>p7jES(}Lby}"
+      protocol: "3.5"
+      brightness: 1000
+  s3:
+    endpointUrl: "http://lang-learn-minio.lang-learn.svc.cluster.local:9000"
+    bucketName: "road-events"
+    accessKey: "minioadmin"
+    secretKey: "minioadmin"
+    region: "us-east-1"
+  database:
+    host: postgres-postgis
+    port: 5432
+    name: roadevents
+    user: postgres
+    password: postgres_password_123

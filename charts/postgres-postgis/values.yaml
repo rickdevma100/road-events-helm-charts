@@ -1,0 +1,33 @@
+namespace:
+  create: true
+  name: road-events
+
+image:
+  repository: kartoza/postgis
+  tag: "15-3.3"
+  pullPolicy: IfNotPresent
+
+auth:
+  database: roadevents
+  username: postgres
+  password: postgres_password_123
+
+persistence:
+  enabled: true
+  claimName: postgres-postgis-pvc
+  storageClass: microk8s-hostpath
+  size: 10Gi
+  mountPath: /var/lib/postgresql
+  subPath: postgis-data
+
+service:
+  type: ClusterIP
+  port: 5432
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1536Mi

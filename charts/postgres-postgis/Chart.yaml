@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres-postgis
+description: Helm chart for PostGIS on MicroK8s for Road Events
+type: application
+version: 0.1.0
+appVersion: "15-3.3"
