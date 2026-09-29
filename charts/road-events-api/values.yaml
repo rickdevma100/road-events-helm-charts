@@ -46,6 +46,7 @@ database:
 service:
   type: ClusterIP
   port: 8000
+  nodePort: 30800
 
 ngrok:
   enabled: false
