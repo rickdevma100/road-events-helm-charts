@@ -39,6 +39,17 @@ road-events-api:
     accessKey: "minioadmin"
     secretKey: "minioadmin"
     region: "us-east-1"
+  smtp:
+    enabled: true
+    host: "smtp.gmail.com"
+    port: 587
+    user: "rickdev.ma100@gmail.com"
+    adminEmail: "rickdev.ma100@gmail.com"
+    recipientEmail: "sayantikasaha400@gmail.com"
+    password: "lszf keer clvm mnvz"
+    existingSecret:
+      name: ""
+      key: "smtp-password"
   database:
     host: postgres-postgis
     port: 5432

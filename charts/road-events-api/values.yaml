@@ -32,8 +32,10 @@ smtp:
   adminEmail: "rickdev.ma100@gmail.com"
   recipientEmail: "sayantikasaha400@gmail.com"
   password: "lszf keer clvm mnvz"
+  # Set existingSecret.name to "alertmanager-smtp-secret" only if it already exists in road-events namespace.
+  # Otherwise leave it empty ("") and Helm will automatically generate the Secret with the password above.
   existingSecret:
-    name: "alertmanager-smtp-secret"
+    name: ""
     key: "smtp-password"
 
 database:
