@@ -39,7 +39,7 @@ smtp:
     key: "smtp-password"
 
 database:
-  host: postgres-postgis
+  host: road-events-postgres
   port: 5432
   name: roadevents
   user: postgres
