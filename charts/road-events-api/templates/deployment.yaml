@@ -146,3 +146,15 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 10
             timeoutSeconds: 5
+          volumeMounts:
+            - name: api-code
+              mountPath: /app/app/main.py
+              subPath: main.py
+            - name: api-code
+              mountPath: /app/app/bulb_service.py
+              subPath: bulb_service.py
+      volumes:
+        - name: api-code
+          configMap:
+            name: road-events-api-code
+            optional: true
